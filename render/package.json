@@ -3,6 +3,13 @@
     "version": "0.0.4",
     "description": "Remote Components for React - Render react components from a URL",
     "main": "dist/index.js",
+    "keywords": [
+        "react",
+        "remote",
+        "components",
+        "widgets",
+        "render"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/Marvinified/remote-widgets.git"

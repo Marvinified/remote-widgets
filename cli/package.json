@@ -3,6 +3,13 @@
     "version": "0.0.8",
     "description": "Build react components you can import from a URL",
     "main": "dist/src/index.js",
+    "keywords": [
+        "react",
+        "remote",
+        "components",
+        "widgets",
+        "build"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Marvinified/remote-widgets.git"

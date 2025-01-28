@@ -92,8 +92,7 @@ Remote Widgets allows you to dynamically render react components from a URL duri
     npx serve ./dist/widgets --cors
     ```
 
-    > Note: you componentsa will not load if there are cors issues from the hosting server.
-
+    > Note: your componentsa will not load if there are cors issues from the hosting server.
 
     In production, you can host the files on vercel or similar service as static files.
 
