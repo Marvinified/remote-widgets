@@ -45,7 +45,7 @@ process.argv = process.argv.filter(arg => arg !== '--watch');
 const currentDir = process.cwd();
 
 const inPath = process.argv[2] || '**/widgets/*.tsx';
-const outPath = process.argv[3] || '../dist/widgets';
+const outPath = process.argv[3] || 'dist/widgets';
 
 
 const widgetPath = path.resolve(currentDir, inPath);
