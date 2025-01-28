@@ -1,15 +1,26 @@
 {
     "name": "@remote-widgets/build",
-    "version": "0.0.6",
+    "version": "0.0.8",
     "description": "Build react components you can import from a URL",
     "main": "dist/src/index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Marvinified/remote-widgets.git"
+    },
+    "homepage": "https://github.com/Marvinified/remote-widgets",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "watch": "node ./bin/build-widgets.js --watch",
         "build:widgets": "node ./bin/build-widgets.js",
-        "build": "rimraf bin && tsc -p tsconfig.json && chmod +x ./bin/build-widgets.js && yarn build:widgets"
+        "build": "rimraf bin && tsc -p tsconfig.json && chmod +x ./bin/build-widgets.js && yarn build:widgets",
+        "addreadme": "cp ../README.md ./README.md",
+        "removereadme": "rm ./README.md",
+        "prepare": "npm run build && npm run addreadme",
+        "postpublish": "npm run removereadme"
     },
-    "bin": "./bin/build-widgets.js",
+    "bin": {
+        "build": "./bin/build-widgets.js"
+    },
     "files": [
         "bin"
     ],
@@ -52,5 +63,6 @@
         "extends": [
             "react-app"
         ]
-    }
+    },
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
