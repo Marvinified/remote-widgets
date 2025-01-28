@@ -22,7 +22,7 @@
         "build": "tsc --outDir ./dist",
         "addreadme": "cp ../README.md ./README.md",
         "removereadme": "rm ./README.md",
-        "prepare": "npm run build && npm run addreadme",
+        "prepublishOnly": "npm run build && npm run addreadme",
         "postpublish": "npm run removereadme"
     },
     "files": [

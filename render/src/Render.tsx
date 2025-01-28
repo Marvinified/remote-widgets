@@ -12,10 +12,10 @@ interface WindowWithWidgets {
 
 interface RemoteRenderProps {
   url: string;
-  props?: Record<string, unknown>;
+  [key: string]: unknown;
 }
 
-export const RemoteRender: React.FC<RemoteRenderProps> = ({ url, props = {} }) => {
+export const RemoteRender: React.FC<RemoteRenderProps> = ({ url, ...props }) => {
   const [DynamicWidget, setDynamicWidget] = useState<React.ComponentType<Record<string, unknown>> | null>(null);
   const [error, setError] = useState<string | null>(null);
 
