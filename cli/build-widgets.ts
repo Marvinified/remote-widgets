@@ -86,14 +86,13 @@ async function buildWidgets() {
   // Bundle each widget
   for (const widgetFile of widgetFiles) {
     const widgetName = path.basename(widgetFile, '.tsx');
-    const pathParts = widgetFile.split('/');
-    const appName = pathParts[pathParts.indexOf('widgets') - 1] || 'default';
-    
+    const relativeDir = path.relative(currentDir, path.dirname(widgetFile));
+
     const config: Configuration = {
       ...baseConfig,
       entry: path.resolve(currentDir, widgetFile),
       output: {
-        path: path.resolve(baseOutputDir, appName),
+        path: baseOutputDir + '/' + relativeDir,
         filename: `${widgetName}.js`,
         library: widgetName,
         libraryTarget: 'var',
