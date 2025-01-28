@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+      "outDir": "./bin",
+      "rootDir": "./src",
+      "emitDeclarationOnly": false,
+      "declaration": true,
+      "esModuleInterop": true,
+      "declarationMap": false,
+      "forceConsistentCasingInFileNames": true,
+      "strict": false,
+      "sourceMap": true
+  },
+  "include": ["src"]
+} 

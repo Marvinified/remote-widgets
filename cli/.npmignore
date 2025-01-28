@@ -1,0 +1,7 @@
+/dist
+/bin
+/node_modules
+/sample
+eslint.config.mjs
+tsconfig.json
+yarn.lock
