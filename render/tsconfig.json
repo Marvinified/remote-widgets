@@ -9,7 +9,7 @@
       "declarationMap": false,
       "forceConsistentCasingInFileNames": true,
       "strict": false,
-      "sourceMap": true
+      "sourceMap": false
   },
   "include": ["src"]
 } 
