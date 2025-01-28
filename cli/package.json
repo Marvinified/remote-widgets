@@ -1,6 +1,6 @@
 {
     "name": "@remote-widgets/build",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Build react components you can import from a URL",
     "main": "dist/src/index.js",
     "scripts": {
