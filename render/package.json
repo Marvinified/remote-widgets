@@ -1,13 +1,22 @@
 {
     "name": "@remote-widgets/render",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Remote Components for React - Render react components from a URL",
     "main": "dist/index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Marvinified/remote-widgets.git"
+    },
+    "homepage": "https://github.com/Marvinified/remote-widgets",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "clean": "rimraf dist",
         "prebuild": "npm run clean",
-        "build": "tsc --outDir ./dist"
+        "build": "tsc --outDir ./dist",
+        "addreadme": "cp ../README.md ./README.md",
+        "removereadme": "rm ./README.md",
+        "prepare": "npm run build && npm run addreadme",
+        "postpublish": "npm run removereadme"
     },
     "files": [
         "dist"
@@ -37,6 +46,5 @@
         "extends": [
             "react-app"
         ]
-    },
-    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+    }
 }
