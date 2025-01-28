@@ -4,6 +4,14 @@ import path from 'path';
 import fs from 'fs';
 import { glob } from 'glob';
 
+// Get the path to our package's node_modules
+const packageRoot = path.resolve(__dirname);
+const babelLoaderPath = require.resolve('babel-loader', { paths: [packageRoot] });
+const babelCorePath = require.resolve('@babel/core', { paths: [packageRoot] });
+const babelPresetEnvPath = require.resolve('@babel/preset-env', { paths: [packageRoot] });
+const babelPresetReactPath = require.resolve('@babel/preset-react', { paths: [packageRoot] });
+const babelPresetTypescriptPath = require.resolve('@babel/preset-typescript', { paths: [packageRoot] });
+
 const baseConfig: Configuration = {
   mode: 'production',
   resolve: {
@@ -15,14 +23,14 @@ const baseConfig: Configuration = {
         test: /\.(ts|tsx)$/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: babelLoaderPath,
             options: {
               presets: [
-                '@babel/preset-env',
-                ['@babel/preset-react', {
+                babelPresetEnvPath,
+                [babelPresetReactPath, {
                   runtime: 'classic'
                 }],
-                '@babel/preset-typescript'
+                babelPresetTypescriptPath
               ]
             }
           }
@@ -35,12 +43,14 @@ const baseConfig: Configuration = {
     react: 'React',
     'react-dom': 'ReactDOM'
   },
+  resolveLoader: {
+    modules: [path.resolve(packageRoot, 'node_modules')]
+  }
 };
 
 // Get widget path and output directory from CLI args or use defaults
 const watchMode = process.argv.includes('--watch');
 process.argv = process.argv.filter(arg => arg !== '--watch');
-
 
 const currentDir = process.cwd();
 
@@ -48,31 +58,29 @@ const inPath = process.argv[2] || '**/widgets/*.tsx';
 const outPath = process.argv[3] || 'dist/widgets';
 
 
-const widgetPath = path.resolve(currentDir, inPath);
-const baseOutputDir = path.resolve(currentDir, outPath);
-
+const widgetPath = currentDir + '/' + inPath;
+const baseOutputDir = currentDir + '/' + outPath;
 
 function handleWebpackResult(err: Error | null, stats: Stats | undefined) {
-    if (err) {
-        console.error(err);
-        return;
-    }
-    if (!stats) {
-        console.error('No stats available');
-        return;
-    }
+  if (err) {
+    console.error(err);
+    return;
+  }
+  if (!stats) {
+    console.error('No stats available');
+    return;
+  }
 
-    console.log(stats.toString({
-        colors: true,
-        chunks: false,
-        modules: false,
-    }));
+  console.log(stats.toString({
+    colors: true,
+    chunks: false,
+    modules: false,
+  }));
 }
 
 async function buildWidgets() {
   // Find all widget files
   const widgetFiles = await glob(widgetPath);
-  
   // Create dist directory if it doesn't exist
   fs.mkdirSync(baseOutputDir, { recursive: true });
 
@@ -112,7 +120,7 @@ async function buildWidgets() {
       });
     }
 
-    console.info(`Found ${widgetName} in ${widgetFile.replace(currentDir, '')}`);
+    console.info(`Found ${widgetName} in .${widgetFile.replace(currentDir, '')}`);
   }
 
   console.info(`\n`);
@@ -120,10 +128,10 @@ async function buildWidgets() {
     console.log('Watching for changes...');
     // Keep process alive in watch mode
     process.stdin.resume();
-    
+
     // Handle graceful shutdown
     process.on('SIGINT', () => {
-      compilers.forEach(compiler => compiler.close(() => {}));
+      compilers.forEach(compiler => compiler.close(() => { }));
       process.exit(0);
     });
   }
