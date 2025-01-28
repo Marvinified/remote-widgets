@@ -1,9 +1,9 @@
-# Remote Widget
+# Remote Widgets
 
-Remote Widget allows you to dynamically render react components from a URL during runtime.
+Remote Widgets allows you to dynamically render react components from a URL during runtime.
 
 ```jsx
-<RemoteRenderer
+<RemoteRender
     url="http://localhost:3000/email/EmailPreview.js"
     props={{
         subject: 'Important Meeting',
@@ -31,8 +31,10 @@ Remote Widget allows you to dynamically render react components from a URL durin
 
     ```jsx
     ...
-    <RemoteRenderer
-        url="https://github.com/Marvinified/remote-widgets/blob/main/cli/sample/built/EmailPreview.js"
+    import { RemoteRender } from '@remote-widgets/render'
+    ...
+    <RemoteRender
+        url="https://raw.githubusercontent.com/Marvinified/remote-widgets/refs/heads/main/cli/sample/built/EmailPreview.js"
         props={{
             subject: 'Important Meeting',
             sender: 'john@example.com',
