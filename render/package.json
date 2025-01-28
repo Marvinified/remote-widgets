@@ -1,6 +1,6 @@
 {
     "name": "@remote-widgets/render",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "Remote Components for React - Render react components from a URL",
     "main": "dist/index.js",
     "keywords": [
