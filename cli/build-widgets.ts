@@ -41,8 +41,16 @@ const baseConfig: Configuration = {
 const watchMode = process.argv.includes('--watch');
 process.argv = process.argv.filter(arg => arg !== '--watch');
 
-const widgetPath = process.argv[2] || './**/widgets/*.tsx';
-const baseOutputDir = process.argv[3] || path.resolve(__dirname, '../dist/widgets');
+
+const currentDir = process.cwd();
+
+const inPath = process.argv[2] || '**/widgets/*.tsx';
+const outPath = process.argv[3] || '../dist/widgets';
+
+
+const widgetPath = path.resolve(currentDir, inPath);
+const baseOutputDir = path.resolve(currentDir, outPath);
+
 
 function handleWebpackResult(err: Error | null, stats: Stats | undefined) {
     if (err) {
@@ -83,7 +91,7 @@ async function buildWidgets() {
     
     const config: Configuration = {
       ...baseConfig,
-      entry: path.resolve(__dirname, '..', widgetFile),
+      entry: path.resolve(currentDir, widgetFile),
       output: {
         path: path.resolve(baseOutputDir, appName),
         filename: `${widgetName}.js`,
@@ -105,9 +113,10 @@ async function buildWidgets() {
       });
     }
 
-    console.info(`Found ${appName}/${widgetName}`);
+    console.info(`Found ${widgetName} in ${widgetFile.replace(currentDir, '')}`);
   }
 
+  console.info(`\n`);
   if (watchMode) {
     console.log('Watching for changes...');
     // Keep process alive in watch mode
