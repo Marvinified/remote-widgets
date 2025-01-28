@@ -27,7 +27,7 @@ Remote Widgets allows you to dynamically render react components from a URL duri
 
 2. **Render a remote widget**
 
-    To see remote widget in action, you can render any of the widgets in [cli/sample/built](https://github.com/Marvinified/remote-widgets/blob/main/cli/sample/built).
+    You can render any of the prebuilt widgets in [cli/sample/built](https://github.com/Marvinified/remote-widgets/blob/main/cli/sample/built).
 
     ```jsx
     ...
@@ -44,7 +44,7 @@ Remote Widgets allows you to dynamically render react components from a URL duri
     ...
     ```
 
-    You can find the corresponding jsx code in [cli/sample/built](https://github.com/Marvinified/remote-widgets/blob/main/cli/sample/widgets)
+    You can find the corresponding jsx code in [cli/sample/widgets](https://github.com/Marvinified/remote-widgets/blob/main/cli/sample/widgets)
 
 
 
@@ -119,10 +119,8 @@ Remote Widgets allows you to dynamically render react components from a URL duri
 
 
 
+## Styling Components
 
-
-
-
-
+- [] TODO (support for css/tailwind)
 
 
