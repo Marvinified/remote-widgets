@@ -4,7 +4,7 @@ Remote Widgets allows you to dynamically render react components from a URL duri
 
 ```jsx
 <RemoteRender
-    url="https://raw.githubusercontent.com/Marvinified/remote-widgets/refs/heads/main/cli/sample/built/EmailPreview.js"
+    url="https://raw.githubusercontent.com/marvinified/remote-widgets/refs/heads/main/cli/sample/built/EmailPreview.js"
     subject="Important Meeting"
     sender="john@example.com"
     preview="Let's discuss the project updates..."
@@ -26,7 +26,7 @@ Remote Widgets allows you to dynamically render react components from a URL duri
 
 2. **Render a remote widget**
 
-    You can render any of the prebuilt widgets in [cli/sample/built](https://github.com/Marvinified/remote-widgets/blob/main/cli/sample/built).
+    You can render any of the prebuilt widgets in [cli/sample/built](https://github.com/marvinified/remote-widgets/blob/main/cli/sample/built).
 
     ```jsx
     import { RemoteRender } from '@remote-widgets/render'
@@ -39,7 +39,7 @@ Remote Widgets allows you to dynamically render react components from a URL duri
     />
     ```
 
-    You can find the corresponding jsx code in [cli/sample/widgets](https://github.com/Marvinified/remote-widgets/blob/main/cli/sample/widgets)
+    You can find the corresponding jsx code in [cli/sample/widgets](https://github.com/marvinified/remote-widgets/blob/main/cli/sample/widgets)
 
 ## Building your own Widgets
 
@@ -86,14 +86,14 @@ Remote Widgets allows you to dynamically render react components from a URL duri
     npx @remote-widgets/build src/EmailPreview.tsx
     ```
 
-    Component is built into ./dist/widgets/Email/EmailPreview
+    Component is built into ./dist/widgets/src/EmailPreview.js
 
 3. Serve your components
 
     Locally you can serve your remote component using `serve` or any local live server you wish.
 
     ```bash
-    npx serve ./dist/widgets --cors
+    npx serve ./dist/widgets/src --cors
     ```
 
     > Note: your componentsa will not load if there are cors issues from the hosting server.
@@ -104,7 +104,7 @@ Remote Widgets allows you to dynamically render react components from a URL duri
 
     ```jsx
     <RemoteRender
-        url="https://raw.githubusercontent.com/Marvinified/remote-widgets/refs/heads/main/cli/sample/built/EmailPreview.js"
+        url="http://localhost:3000/EmailPreview.js"
         subject="Important Meeting"
         sender="john@example.com"
         preview="Let's discuss the project updates..."
