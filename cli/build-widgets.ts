@@ -15,13 +15,13 @@ const babelPresetTypescriptPath = require.resolve('@babel/preset-typescript', { 
 const baseConfig: Configuration = {
   mode: 'production',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(ts|tsx)$/,
