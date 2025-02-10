@@ -20,6 +20,10 @@ const baseConfig: Configuration = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.(ts|tsx)$/,
         use: [
           {
