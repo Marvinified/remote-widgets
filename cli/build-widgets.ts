@@ -16,6 +16,9 @@ const baseConfig: Configuration = {
   mode: 'production',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.css'],
+    modules: [
+      'node_modules'
+    ]
   },
   module: {
     rules: [
